@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кондитерская Анастасии Касянюк</title>
+    
+    <!-- подключаем шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- настраиваем шрифты в tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    animation: {
+                        blob: "blob 15s infinite",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* скрываем скроллбар для блока отзывов, но оставляем функционал */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* предотвращаем горизонтальный скролл всего сайта */
+        body {
+            overflow-x: hidden;
+        }
+        /* стили для скрытия стрелок у инпута type=number */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-[#F9F1E7] text-[#6B4980] font-sans font-light antialiased relative min-h-screen z-0">
+
+    <!-- анимированный фон -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[30rem] md:w-[40rem] h-[30rem] md:h-[40rem] bg-[#D893CF] rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-blob"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[25rem] md:w-[35rem] h-[25rem] md:h-[35rem] bg-[#9B96DB] rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-blob" style="animation-delay: 2s"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-[35rem] md:w-[45rem] h-[35rem] md:h-[45rem] bg-[#839C44] rounded-full mix-blend-multiply filter blur-[100px] opacity-15 animate-blob" style="animation-delay: 4s"></div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 md:py-16 space-y-16 md:space-y-24">
+
+        <!-- главный экран -->
+        <section class="py-8 md:py-20 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+            <!-- фото мастера -->
+            <div class="shrink-0 relative">
+                <!-- декоративное пятно сзади -->
+                <div class="absolute inset-0 bg-[#9B96DB]/20 rounded-full transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4"></div>
+                <img src="https://i.yapx.ru/dRM76.jpg" alt="Анастасия Касянюк" class="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-white/60 shadow-lg">
+            </div>
+            <!-- текстовая часть -->
+            <div class="text-center md:text-left max-w-xl">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif font-bold italic mb-4 md:mb-6 leading-tight text-[#6B4980]">
+                    Кондитерская<br>Анастасии Касянюк
+                </h1>
+                <p class="text-lg md:text-2xl opacity-90 mb-8 md:mb-10 px-4 md:px-0 leading-relaxed">
+                    Авторские десерты с необычными вкусами из премиальных ингредиентов.
+                </p>
+                <a href="#calculator" class="inline-block bg-[#6B4980] text-white font-medium py-3 px-8 md:px-10 rounded-full hover:bg-[#839C44] transition transform hover:scale-105 shadow-md active:scale-95">
+                    Собрать набор
+                </a>
+            </div>
+        </section>
+
+        <!-- меню вкусов -->
+        <section id="menu" class="scroll-mt-10 md:scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold italic mb-8 md:mb-12 text-center text-[#6B4980]">Меню вкусов</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- классическая -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 flex items-center justify-center opacity-60">
+                        
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Классическая</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">200 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">вкус знакомый с детства. сочный шоколадный бисквит со сливочным кремом, сгущенным молоком и качественным какао.</p>
+                    </div>
+                </div>
+
+                <!-- вишневый бархат -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 overflow-hidden">
+                        <img src="https://i.yapx.ru/dR85R.jpg" alt="Вишневый бархат" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Вишневый бархат</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">250 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">нежный бисквит "красный бархат", тающий крем-чиз и яркая сочная начинка из вишневого конфи с приятной кислинкой.</p>
+                    </div>
+                </div>
+
+                <!-- молочный ломтик -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 flex items-center justify-center opacity-60">
+                        
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Молочный ломтик</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">250 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">воздушный шоколадный бисквит и легкий мусс на основе сливок и маскарпоне с деликатным медовым послевкусием.</p>
+                    </div>
+                </div>
+
+                <!-- киндер кантри -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 overflow-hidden">
+                        <img src="https://i.yapx.ru/dR9EF.jpg" alt="Киндер кантри" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Киндер кантри</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">сливочный крем из качественного белого шоколада со сгущенным молоком и добавлением хрустящих воздушных злаков.</p>
+                    </div>
+                </div>
+
+                <!-- тирамису -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 overflow-hidden">
+                        <img src="https://i.yapx.ru/dR9FS.jpg" alt="Тирамису" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Тирамису</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">кофейный бисквит с пропиткой, нежный крем на основе сыра маскарпоне и классическая присыпка из терпкого какао.</p>
+                    </div>
+                </div>
+
+                <!-- брауни-вишня -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 flex items-center justify-center opacity-60">
+                        
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Брауни-вишня</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">насыщенный и плотный шоколадный бисквит в сочетании с сочной вишней, которая идеально балансирует сладость темного шоколада.</p>
+                    </div>
+                </div>
+
+                <!-- клубничный милкшейк -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 flex items-center justify-center opacity-60">
+                        
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Клубничный милкшейк</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">ванильный бисквит с клубничным ганашем и воздушным сливочным кремом. напоминает вкус клубничного мороженого.</p>
+                    </div>
+                </div>
+
+                <!-- баунти -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 flex items-center justify-center opacity-60">
+                        
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Баунти</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">влажный шоколадный бисквит, щедрый слой сочной кокосовой начинки и покрытие из нежного молочного шоколада.</p>
+                    </div>
+                </div>
+
+                <!-- рафаэлло -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 overflow-hidden">
+                        <img src="https://i.yapx.ru/dR9ET.jpg" alt="Рафаэлло" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Рафаэлло</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">миндально-кокосовый бисквит, белый шоколад, сливочный крем и хрустящий цельный миндаль в самом центре.</p>
+                    </div>
+                </div>
+
+                <!-- ферреро -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 flex items-center justify-center opacity-60">
+                        
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Ферреро</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">шоколадно-ореховый бисквит с нутеллой, вафельной крошкой и глазурью с щедрой порцией дробленого фундука.</p>
+                    </div>
+                </div>
+
+                <!-- фисташка-малина -->
+                <div class="bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-[#9B96DB] transition duration-300 shadow-sm flex flex-col">
+                    <div class="h-48 bg-white/50 overflow-hidden">
+                        <img src="https://i.yapx.ru/dR9E8.jpg" alt="Фисташка-малина" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5 md:p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-[#6B4980]">Фисташка-малина</h3>
+                            <span class="font-bold text-[#839C44] whitespace-nowrap ml-2">300 ₽</span>
+                        </div>
+                        <p class="text-sm opacity-90 leading-relaxed">бисквит на основе 100% фисташковой пасты с освежающим центром из натурального малинового пюре.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- конфигуратор заказа -->
+        <section id="calculator" class="scroll-mt-10 md:scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold italic mb-8 md:mb-12 text-center text-[#6B4980]">Конфигуратор заказа</h2>
+            
+            <div class="bg-white/30 backdrop-blur-md rounded-2xl md:rounded-3xl border border-white/50 shadow-sm overflow-hidden">
+                
+                <!-- шаг 1: калькулятор мероприятия -->
+                <div class="p-6 md:p-10 border-b border-white/40 bg-white/20">
+                    <h3 class="text-2xl font-serif font-bold mb-4 text-[#6B4980]">1. помощник: сколько нужно на мероприятие?</h3>
+                    <p class="text-sm opacity-80 mb-6">заполните поля, если сомневаетесь в количестве. мы подскажем оптимальный объем.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">количество гостей</label>
+                            <input type="number" id="calcGuests" min="1" placeholder="например, 20" class="w-full bg-white/50 border border-white/50 rounded-xl px-4 py-3 focus:outline-none focus:border-[#6B4980] transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">тип события</label>
+                            <select id="calcType" class="w-full bg-white/50 border border-white/50 rounded-xl px-4 py-3 focus:outline-none focus:border-[#6B4980] transition appearance-none">
+                                <option value="birthday">день рождения</option>
+                                <option value="office">в офис / коллегам</option>
+                                <option value="wedding">свадьба</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">формат</label>
+                            <select id="calcFormat" class="w-full bg-white/50 border border-white/50 rounded-xl px-4 py-3 focus:outline-none focus:border-[#6B4980] transition appearance-none">
+                                <option value="dessert">десерт после еды</option>
+                                <option value="main">основной сладкий стол</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="calculateEvent()" class="w-full md:w-auto bg-[#9B96DB] text-white font-medium py-3 px-8 rounded-xl hover:bg-[#6B4980] transition shadow-sm">
+                        Рассчитать рекомендацию
+                    </button>
+                    
+                    <div id="calcResult" class="hidden mt-6 p-4 bg-[#839C44]/10 border border-[#839C44]/20 rounded-xl text-[#6B4980]">
+                        <p class="font-medium text-lg">рекомендуем заказать: <span id="calcResultCount" class="font-bold text-[#839C44] text-xl">0</span> шт.</p>
+                        <p class="text-sm opacity-80 mt-1">ориентировочный бюджет: от <span id="calcResultPriceMin">0</span> до <span id="calcResultPriceMax">0</span> ₽</p>
+                    </div>
+                </div>
+
+                <!-- шаг 2: сборка бокса -->
+                <div class="p-6 md:p-10 border-b border-white/40">
+                    <h3 class="text-2xl font-serif font-bold mb-4 text-[#6B4980]">2. соберите ваш набор</h3>
+                    <p class="text-sm opacity-80 mb-6">укажите желаемое количество для каждого вкуса.</p>
+                    
+                    <div class="space-y-3" id="flavorList">
+                        <!-- элементы генерируются через JS -->
+                    </div>
+                </div>
+
+                <!-- шаг 3: опции и итог -->
+                <div class="p-6 md:p-10 bg-white/10">
+                    <h3 class="text-2xl font-serif font-bold mb-6 text-[#6B4980]">3. оформление и итог</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <label class="block text-sm font-medium mb-3">упаковка</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="radio" name="packaging" value="0" checked onchange="updateTotal()" class="w-4 h-4 text-[#6B4980] focus:ring-[#6B4980]">
+                                    <span>стандартная коробка (бесплатно)</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="radio" name="packaging" value="200" onchange="updateTotal()" class="w-4 h-4 text-[#6B4980] focus:ring-[#6B4980]">
+                                    <span>подарочный набор с лентой (+200 ₽)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-3">доставка</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="radio" name="delivery" value="0" checked onchange="updateTotal()" class="w-4 h-4 text-[#6B4980] focus:ring-[#6B4980]">
+                                    <span>самовывоз (бесплатно)</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="radio" name="delivery" value="400" onchange="updateTotal()" class="w-4 h-4 text-[#6B4980] focus:ring-[#6B4980]">
+                                    <span>курьер по городу (+400 ₽)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/50 rounded-2xl p-6 md:p-8 border border-white/60">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="opacity-80">всего пирожных:</span>
+                            <span id="totalItems" class="font-bold text-lg">0 шт</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="opacity-80">средняя цена за 1 шт:</span>
+                            <span id="avgPrice" class="font-medium">0 ₽</span>
+                        </div>
+                        <div id="discountBlock" class="flex justify-between items-center mb-4 text-[#839C44] hidden">
+                            <span class="font-medium">скидка от объема (10%):</span>
+                            <span id="discountValue" class="font-bold">-0 ₽</span>
+                        </div>
+                        <div class="h-px w-full bg-[#6B4980]/10 my-4"></div>
+                        <div class="flex justify-between items-end mb-8">
+                            <span class="text-xl font-serif font-bold">Итого к оплате:</span>
+                            <span id="totalPrice" class="text-3xl md:text-4xl font-bold text-[#839C44]">0 ₽</span>
+                        </div>
+                        
+                        <button onclick="placeOrder()" id="orderBtn" disabled class="w-full bg-[#6B4980] disabled:bg-[#6B4980]/40 disabled:cursor-not-allowed text-white font-medium text-lg py-4 rounded-xl hover:bg-[#839C44] transition shadow-md active:scale-95">
+                            Оформить заказ в Telegram
+                        </button>
+                        <p class="text-center text-xs opacity-60 mt-3">нажимая на кнопку, вы перейдете в чат с мастером с готовым списком вашего заказа</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- процесс создания (видео) -->
+        <section id="process" class="scroll-mt-10 md:scroll-mt-20 bg-white/30 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-12 border border-white/50 shadow-sm">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold italic mb-8 text-center text-[#6B4980]">Процесс создания</h2>
+            <div class="w-full max-w-sm mx-auto rounded-xl overflow-hidden bg-white/50 relative shadow-md border border-white/50">
+                <div style="position: relative; padding-top: 177.5%; width: 100%">
+                    <iframe src="https://kinescope.io/embed/eXTYLHUJWm1yMZ4Mq9Y8B6" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                </div>
+            </div>
+            <p class="text-center mt-8 opacity-90 max-w-2xl mx-auto leading-relaxed px-2">
+                ручная работа на каждом этапе. только натуральные сливки, сливочное масло 82.5% и настоящий бельгийский шоколад. Никаких заменителей.
+            </p>
+        </section>
+
+        <!-- мои работы -->
+        <section id="portfolio" class="scroll-mt-10 md:scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold italic mb-8 md:mb-12 text-center text-[#6B4980]">Мои работы</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-4xl mx-auto">
+                <!-- фото 1 -->
+                <div class="aspect-square bg-white/50 rounded-xl flex items-center justify-center border border-white/50 hover:border-[#9B96DB] hover:scale-[1.02] transition-all shadow-sm overflow-hidden">
+                    <img src="https://i.yapx.ru/dQ9IM.jpg" alt="Моя работа 1" class="w-full h-full object-cover">
+                </div>
+                <!-- фото 2 -->
+                <div class="aspect-square bg-white/50 rounded-xl flex items-center justify-center border border-white/50 hover:border-[#9B96DB] hover:scale-[1.02] transition-all shadow-sm overflow-hidden">
+                    <img src="https://i.yapx.ru/dQ9IC.jpg" alt="Моя работа 2" class="w-full h-full object-cover">
+                </div>
+                <!-- фото 3 -->
+                <div class="aspect-square bg-white/50 rounded-xl flex items-center justify-center border border-white/50 hover:border-[#9B96DB] hover:scale-[1.02] transition-all shadow-sm overflow-hidden">
+                    <img src="https://i.yapx.ru/dR8cI.jpg" alt="Моя работа 3" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- отзывы (листающиеся) -->
+        <section id="reviews" class="scroll-mt-10 md:scroll-mt-20 overflow-hidden">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold italic mb-8 md:mb-10 text-center text-[#6B4980]">Отзывы</h2>
+            <!-- контейнер со скроллом -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-6 no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+                
+                <!-- отзыв 1 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-sm">
+                    <div class="flex text-[#D893CF] mb-3">★★★★★</div>
+                    <p class="mb-4 opacity-90 text-sm md:text-base leading-relaxed">«это лучшая картошка, что я ела! Вкус из детства, но в миллион раз нежнее. Шоколадная глазурь просто тает во рту. Заказывали на праздник, все гости были в восторге.»</p>
+                    <div class="font-bold text-sm text-[#6B4980]">- Анна С.</div>
+                </div>
+
+                <!-- отзыв 2 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-sm">
+                    <div class="flex text-[#D893CF] mb-3">★★★★★</div>
+                    <p class="mb-4 opacity-90 text-sm md:text-base leading-relaxed">«фисташковая картошка - отвал башки. Никогда не думал, что этот десерт может быть таким современным. Очень красивая упаковка, идеально для подарка.»</p>
+                    <div class="font-bold text-sm text-[#6B4980]">- Михаил В.</div>
+                </div>
+
+                <!-- отзыв 3 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-sm">
+                    <div class="flex text-[#D893CF] mb-3">★★★★★</div>
+                    <p class="mb-4 opacity-90 text-sm md:text-base leading-relaxed">«заказываю уже третий раз. Продукты явно качественные, нет этого противного привкуса маргарина, как в магазинных. Рекомендую всем!»</p>
+                    <div class="font-bold text-sm text-[#6B4980]">- Елена К.</div>
+                </div>
+
+                <!-- отзыв 4 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-sm">
+                    <div class="flex text-[#D893CF] mb-3">★★★★★</div>
+                    <p class="mb-4 opacity-90 text-sm md:text-base leading-relaxed">«спасибо за оперативность! Собрали набор день в день. Очень приятный сервис и потрясающий вкус.»</p>
+                    <div class="font-bold text-sm text-[#6B4980]">- Ольга П.</div>
+                </div>
+
+                <!-- отзыв 5 (фотоотзыв) -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-sm flex flex-col">
+                    <div class="flex text-[#D893CF] mb-3">★★★★★</div>
+                    <div class="w-full h-48 md:h-56 rounded-xl overflow-hidden relative border border-white/30">
+                        <img src="https://i.yapx.ru/dR8ZK.jpg" alt="Фотоотзыв клиента" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="font-bold text-sm text-[#6B4980] mt-4">- Фото от клиента</div>
+                </div>
+
+            </div>
+            <div class="text-center text-xs opacity-60 mt-2 italic">свайпайте, чтобы прочитать больше</div>
+        </section>
+
+        <!-- подвал контакты -->
+        <section class="text-center py-10 md:py-16 px-4">
+            <div class="border-t border-[#6B4980]/10 pt-10 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10">
+                <a href="https://t.me/NastyaKasyanuk" target="_blank" class="text-lg md:text-xl font-bold text-[#6B4980] hover:text-[#D893CF] transition">@NastyaKasyanuk</a>
+                <a href="https://instagram.com/" target="_blank" class="text-lg md:text-xl font-bold text-[#6B4980] hover:text-[#D893CF] transition">Instagram</a>
+            </div>
+            
+            <div class="text-center opacity-40 text-[10px] md:text-xs mt-12 uppercase tracking-widest">
+                &copy; 2026 Кондитерская Анастасии Касянюк
+            </div>
+        </section>
+
+    </main>
+
+    <!-- скрипты для калькулятора -->
+    <script>
+        const flavors = [
+            { id: 'f1', name: 'Классическая', price: 200 },
+            { id: 'f2', name: 'Вишневый бархат', price: 250 },
+            { id: 'f3', name: 'Молочный ломтик', price: 250 },
+            { id: 'f4', name: 'Киндер кантри', price: 300 },
+            { id: 'f5', name: 'Тирамису', price: 300 },
+            { id: 'f6', name: 'Брауни-вишня', price: 300 },
+            { id: 'f7', name: 'Клубничный милкшейк', price: 300 },
+            { id: 'f8', name: 'Баунти', price: 300 },
+            { id: 'f9', name: 'Рафаэлло', price: 300 },
+            { id: 'f10', name: 'Ферреро', price: 300 },
+            { id: 'f11', name: 'Фисташка-малина', price: 300 }
+        ];
+
+        // инициализация списка вкусов в DOM
+        const flavorListContainer = document.getElementById('flavorList');
+        
+        flavors.forEach(flavor => {
+            const row = document.createElement('div');
+            row.className = 'flex items-center justify-between py-2 border-b border-white/20 last:border-0';
+            row.innerHTML = `
+                <div class="flex-grow pr-4">
+                    <span class="font-medium">${flavor.name}</span>
+                    <span class="text-xs opacity-70 ml-2">${flavor.price} ₽</span>
+                </div>
+                <div class="flex items-center space-x-2 w-28 shrink-0">
+                    <button onclick="updateQty('${flavor.id}', -1)" class="w-8 h-8 rounded-full bg-white/50 hover:bg-[#9B96DB] text-[#6B4980] hover:text-white transition flex items-center justify-center font-bold text-lg">-</button>
+                    <input type="number" id="qty_${flavor.id}" value="0" min="0" onchange="updateTotal()" class="w-10 h-8 text-center bg-transparent font-bold focus:outline-none">
+                    <button onclick="updateQty('${flavor.id}', 1)" class="w-8 h-8 rounded-full bg-white/50 hover:bg-[#9B96DB] text-[#6B4980] hover:text-white transition flex items-center justify-center font-bold text-lg">+</button>
+                </div>
+            `;
+            flavorListContainer.appendChild(row);
+        });
+
+        // функция обновления количества по кнопкам
+        function updateQty(id, delta) {
+            const input = document.getElementById(`qty_${id}`);
+            let val = parseInt(input.value) || 0;
+            val = Math.max(0, val + delta);
+            input.value = val;
+            updateTotal();
+        }
+
+        // калькулятор мероприятия
+        function calculateEvent() {
+            const guests = parseInt(document.getElementById('calcGuests').value);
+            if (!guests || guests <= 0) {
+                alert('пожалуйста, введите корректное количество гостей');
+                return;
+            }
+
+            const type = document.getElementById('calcType').value;
+            const format = document.getElementById('calcFormat').value;
+
+            // гипотеза расчета (множители)
+            let multiplier = 1;
+            if (type === 'wedding') multiplier = 1.5;
+            if (type === 'birthday') multiplier = 2;
+            if (type === 'office') multiplier = 1.2;
+
+            if (format === 'main') multiplier += 0.5;
+
+            const totalNeeded = Math.ceil(guests * multiplier);
+            
+            document.getElementById('calcResultCount').innerText = totalNeeded;
+            
+            // ориентировочный бюджет (от мин до макс цены за шт)
+            const minPrice = 200;
+            const maxPrice = 300;
+            
+            document.getElementById('calcResultPriceMin').innerText = (totalNeeded * minPrice).toLocaleString('ru-RU');
+            document.getElementById('calcResultPriceMax').innerText = (totalNeeded * maxPrice).toLocaleString('ru-RU');
+            
+            document.getElementById('calcResult').classList.remove('hidden');
+        }
+
+        // обновление итогов
+        function updateTotal() {
+            let totalItems = 0;
+            let sumPrice = 0;
+
+            flavors.forEach(flavor => {
+                const qty = parseInt(document.getElementById(`qty_${flavor.id}`).value) || 0;
+                totalItems += qty;
+                sumPrice += qty * flavor.price;
+            });
+
+            // доп услуги
+            const packagingOption = document.querySelector('input[name="packaging"]:checked').value;
+            const deliveryOption = document.querySelector('input[name="delivery"]:checked').value;
+            
+            sumPrice += parseInt(packagingOption);
+            sumPrice += parseInt(deliveryOption);
+
+            // расчет скидки (10% при заказе от 20 штук)
+            let discount = 0;
+            const discountBlock = document.getElementById('discountBlock');
+            if (totalItems >= 20) {
+                // скидка применяется только на стоимость пирожных, не на доставку/упаковку
+                const itemsPrice = sumPrice - parseInt(packagingOption) - parseInt(deliveryOption);
+                discount = Math.round(itemsPrice * 0.1);
+                sumPrice -= discount;
+                
+                document.getElementById('discountValue').innerText = `-${discount.toLocaleString('ru-RU')} ₽`;
+                discountBlock.classList.remove('hidden');
+            } else {
+                discountBlock.classList.add('hidden');
+            }
+
+            // вывод на экран
+            document.getElementById('totalItems').innerText = `${totalItems} шт`;
+            document.getElementById('totalPrice').innerText = `${sumPrice.toLocaleString('ru-RU')} ₽`;
+            
+            const avgPriceStr = totalItems > 0 ? Math.round((sumPrice - parseInt(deliveryOption) - parseInt(packagingOption) + discount) / totalItems) + ' ₽' : '0 ₽';
+            document.getElementById('avgPrice').innerText = avgPriceStr;
+
+            // блокировка кнопки если нет товаров
+            const orderBtn = document.getElementById('orderBtn');
+            if (totalItems > 0) {
+                orderBtn.disabled = false;
+            } else {
+                orderBtn.disabled = true;
+            }
+        }
+
+        // оформление заказа (формирование ссылки в telegram)
+        function placeOrder() {
+            let orderText = 'Здравствуйте, Анастасия! Я хочу оформить заказ:\n\n';
+            let totalItems = 0;
+
+            flavors.forEach(flavor => {
+                const qty = parseInt(document.getElementById(`qty_${flavor.id}`).value) || 0;
+                if (qty > 0) {
+                    orderText += `- ${flavor.name}: ${qty} шт.\n`;
+                    totalItems += qty;
+                }
+            });
+
+            if (totalItems === 0) return;
+
+            const packagingOption = document.querySelector('input[name="packaging"]:checked').nextElementSibling.innerText;
+            const deliveryOption = document.querySelector('input[name="delivery"]:checked').nextElementSibling.innerText;
+            const finalPrice = document.getElementById('totalPrice').innerText;
+
+            orderText += `\nУпаковка: ${packagingOption}`;
+            orderText += `\nДоставка: ${deliveryOption}`;
+            orderText += `\n\nИтого к оплате: ${finalPrice}`;
+
+            const encodedText = encodeURIComponent(orderText);
+            const tgLink = `https://t.me/NastyaKasyanuk?text=${encodedText}`;
+            
+            window.open(tgLink, '_blank');
+        }
+    </script>
+</body>
+</html>
